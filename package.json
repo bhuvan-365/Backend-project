@@ -1,0 +1,24 @@
+{
+  "name": "backend-project",
+  "version": "1.0.0",
+  "description": "this is first backend project",
+  "keywords": [
+    "Backend",
+    "project"
+  ],
+  "homepage": "https://github.com/bhuvan-365/Backend-project#readme",
+  "bugs": {
+    "url": "https://github.com/bhuvan-365/Backend-project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhuvan-365/Backend-project.git"
+  },
+  "license": "ISC",
+  "author": "Bhuvan bhattrai",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
