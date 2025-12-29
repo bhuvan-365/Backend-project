@@ -127,3 +127,45 @@ connectDB();
   "scripts": {
     "dev": "nodemon -r dotenv/config--experimental-json-modules  src/index.js"
   },
+
+
+  =>final package.json
+  {
+  "name": "backend-project",
+  "version": "1.0.0",
+  "description": "this is first backend project",
+  "keywords": [
+    "Backend",
+    "project"
+  ],
+  "homepage": "https://github.com/bhuvan-365/Backend-project#readme",
+  "bugs": {
+    "url": "https://github.com/bhuvan-365/Backend-project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhuvan-365/Backend-project.git"
+  },
+  "license": "ISC",
+  "author": "Bhuvan bhattrai",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config --experimental-json-modules  src/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11",
+    "prettier": "^3.7.4"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.0.2"
+  }
+}
+
+
+
+=> Other SETUP
+npm install cookie parser
+npm install cors
