@@ -169,3 +169,36 @@ connectDB();
 => Other SETUP
 npm install cookie parser
 npm install cors
+
+=> SET middle ware
+utils/
+
+apiError 
+apiResponse
+asyncHandler
+
+=> Create Models Accordingly
+
+=> install v2 // This is used to add pagination (page & limit) when you use MongoDB aggregation in Mongoose.
+npm install mongoose-paginate-v2
+
+
+=>import like this  in model
+import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
+
+videoSchema.plugin(mongooseAggregatePaginate);
+before export  
+
+=> instal bcrypt 
+A library to help you hash passwords.
+
+npm install bcrypt
+
+=> install jsonwebtoken (JWT)
+  npm install jsonwebtoken
+
+
+ADD like this in model
+
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
