@@ -50,7 +50,7 @@ refreshTokens:{
     timestamps:true
 });
 
-
+//hash password before saving user document
 userSchema.pre("save", async function(next){
     if(!this.isModified("password")) return next();
    this.password = await bcrypt.hash(this.password,10)
@@ -62,6 +62,7 @@ userSchema.methods.ispasswordValid = async function(password)
 return await bcrypt.compare(password,this.password)
 }
 
+//Generate JWT Tokens
 UserSchema.methods.generateAccessToken = function(){
 jwt.sign(
     {
