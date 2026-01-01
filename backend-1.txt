@@ -202,3 +202,20 @@ ADD like this in model
 
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+
+
+SET UP Cloudnary for image / video
+npm i cloudinary
+
+
+
+Also install
+npm install multer (used)
+Or
+npm i express-fileupload
+
+
+fs File system 
+
+
+Use Disk Storage (used) or memory storage 
