@@ -77,7 +77,7 @@ jwt.sign(
     }
 )
 }
-
+//Generate JWT Tokens
 UserSchema.methods.generateRefreshToken = function(){
     jwt.sign(
     {
