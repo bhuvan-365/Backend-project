@@ -220,3 +220,36 @@ fs File system
 
 Use Disk Storage (used) or memory storage 
 
+
+->step to create user
+get user data from req body (frontend)
+validation {format, required fields, unique email etc.} - not empty fields
+check if user already exists : username , email
+check for images 
+check for avatar
+upload image to cloudinary , avatar
+create user object - creation call  -entry in db
+remove password and refresh token from response
+check for errors 
+return response
+
+// user.controllers
+import {asyncHandler} from '../utils/asyncHandler.js';
+
+export const registerUser = asyncHandler(async (req, res) => {
+// return res.status(200).json({
+//     message:"ok its working"
+// })
+
+//get user data from req body (frontend)
+//validation {format, required fields, unique email etc.} - not empty fields
+// check if user already exists : username , email
+// check for images 
+// check for avatar
+// upload image to cloudinary , avatar
+// create user object - creation call  -entry in db
+// remove password and refresh token from response
+//check for errors 
+// return response
+})
+
