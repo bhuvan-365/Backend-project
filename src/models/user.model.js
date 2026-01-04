@@ -1,4 +1,4 @@
-import mongoose, { Schema, trusted } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
@@ -34,7 +34,7 @@ coverImage:{
 },
 watchHistory:[
     {
-        type:Schema.Type.ObjectId,
+        type:Schema.Types.ObjectId,
         ref:"Video"
     }
 ],
@@ -63,7 +63,7 @@ return await bcrypt.compare(password,this.password)
 }
 
 //Generate JWT Tokens
-UserSchema.methods.generateAccessToken = function(){
+userSchema.methods.generateAccessToken = function(){
 jwt.sign(
     {
         _id:this.id,
@@ -71,22 +71,22 @@ jwt.sign(
         email:this.email,
         fullName:this.fullName
     },
-    procedd.env.ACCESS_TOKEN_SECRET,
+    process.env.ACCESS_TOKEN_SECRET,
     {
         expiresIn:process.env.ACCESS_TOKEN_EXPIRY
     }
 )
 }
 //Generate JWT Tokens
-UserSchema.methods.generateRefreshToken = function(){
-    jwt.sign(
+userSchema.methods.generateRefreshToken = function(){
+    return jwt.sign(
     {
         _id:this.id,
         username:this.username,
         email:this.email,
         fullName:this.fullName
     },
-    procedd.env.REFRESH_TOKEN_SECRET,
+    process.env.REFRESH_TOKEN_SECRET,
     {
         expiresIn:process.env.REFRESH_TOKEN_EXPIRY
     }
