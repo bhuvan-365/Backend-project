@@ -1,6 +1,9 @@
 import {asyncHandler} from '../utils/asyncHandler.js';
 import {ApiError} from "../utils/apiError.js"
 import {User} from '../models/user.model.js';
+import {uploadToCloudinary} from '../utils/cloudinary.js';
+import { ApiResponse} from '../utils/apiResponse.js';
+
 
 
 const registerUser = asyncHandler(async (req, res) => {
@@ -31,12 +34,52 @@ if([email, username ,password, fullName].some((field)=>field?.trim()===""))
  throw new ApiError(400, "All fields are required");
  }
 
-const UserExist= User.findOne({
+const existedUser= User.findOne({
     $or:[{ email },{ username }]
 })
 
+if(existedUser){
+    throw new ApiError(409, "User with given email or username already exists");
+}
+
+const avatarLocalPath = req.files?.avatar[0]?.path;
+const coverImageLocalPath = req.files?.coverImage[0]?.path;
+
+if(!avatarLocalPath){
+    throw new ApiError(400, "Avatar image is required");
+}
+
+const avatar = await uploadToCloudinary(avatarLocalPath)
+const coverImage = await uploadToCloudinary(coverImageLocalPath)
+
+if(!avatar){
+    throw new ApiError(500, "Unable to upload avatar image , please try again later");
+}
+
+User.create({
+    fullName,
+    avatar: avatar.url,
+    coverImage: coverImage?.url || "",
+    username: username.toLowerCase(),
+    email,
+    password
+})
+
+const createdUser =await User.findById(user._id).select(
+    "-password -refreshTokens"
+)
+
+if(!createdUser){
+    throw new ApiError(500, "Unable to create user , please try again later");
+}
 
 
+
+return res.status(201).json(
+
+new ApiResponse(200, createdUser, "User registered successfully")
+
+)
 })
 export {
     registerUser
