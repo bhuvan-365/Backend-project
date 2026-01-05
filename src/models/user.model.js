@@ -25,7 +25,7 @@ fullName:{
     trim:true,
     index:true
 },
-avater:{
+avatar:{
     type:String, // cloudinary image url
     required:true,
 },
@@ -64,7 +64,7 @@ return await bcrypt.compare(password,this.password)
 
 //Generate JWT Tokens
 userSchema.methods.generateAccessToken = function(){
-jwt.sign(
+return jwt.sign(
     {
         _id:this.id,
         username:this.username,

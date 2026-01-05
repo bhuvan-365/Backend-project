@@ -22,7 +22,7 @@ const registerUser = asyncHandler(async (req, res) => {
 //check for errors 
 // return response
 
-const {fullName, username, email, password} = req.body;
+const {fullName, username, email, password} = req.body || {};
 
 console.log("email :", email);
 // if(fullName=="" ){
@@ -34,7 +34,7 @@ if([email, username ,password, fullName].some((field)=>field?.trim()===""))
  throw new ApiError(400, "All fields are required");
  }
 
-const existedUser= User.findOne({
+const existedUser = await User.findOne({
     $or:[{ email },{ username }]
 })
 
@@ -56,7 +56,7 @@ if(!avatar){
     throw new ApiError(500, "Unable to upload avatar image , please try again later");
 }
 
-User.create({
+const user = await User.create({
     fullName,
     avatar: avatar.url,
     coverImage: coverImage?.url || "",
