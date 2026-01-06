@@ -22,7 +22,7 @@ const registerUser = asyncHandler(async (req, res) => {
 //check for errors 
 // return response
 
-const {fullName, username, email, password} = req.body || {};
+const {fullName, username, email, password} = req.body;
 
 console.log("email :", email);
 // if(fullName=="" ){
