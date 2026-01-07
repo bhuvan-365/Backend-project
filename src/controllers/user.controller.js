@@ -121,13 +121,12 @@ const loginUser = asyncHandler(async (req, res) => {
             throw new ApiError(404, "User not found with given credentials");
         }
 
-        const ispasswordValid = await user.isPasswordCorrect(password)
+        const ispasswordValid = await user.ispasswordValid(password)
         if (!ispasswordValid) {
             throw new ApiError(401, "Password incorrect");
         }
 
-
-
+        return user;
     })
 
  const { accessToken, refreshToken } = await generateAccessAndRefreshToken(user._id)
