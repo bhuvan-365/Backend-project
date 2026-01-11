@@ -253,3 +253,53 @@ export const registerUser = asyncHandler(async (req, res) => {
 // return response
 })
 
+
+
+These 3 files work together to make your backend clean, safe, and consistent.
+
+1️⃣ asyncHandler
+
+What it does:
+
+Catches errors in async controllers automatically
+
+Sends errors to Express error middleware using next(err)
+
+Why needed:
+
+Express can’t catch async errors by default
+
+Removes try–catch from every controller
+
+👉 Purpose: Auto error catcher for async routes
+
+2️⃣ ApiResponse
+
+What it does:
+
+Creates a standard success response format
+
+{
+  success: true,
+  statusCode: 200,
+  data: {...},
+  message: "success"
+}
+
+
+👉 Purpose: Same response structure everywhere
+
+3️⃣ ApiError
+
+What it does:
+
+Creates custom errors with status codes
+
+Extends JavaScript Error
+
+Keeps error details clean & structured
+
+throw new ApiError(404, "User not found")
+
+
+👉 Purpose: Controlled, meaningful errors
